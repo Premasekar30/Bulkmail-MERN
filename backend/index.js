@@ -6,11 +6,11 @@ import mongoose from "mongoose";
 const app = express();
 app.use(cors());
 app.use(json());
+mongoose.connect("mongodb+srv://prema:123@cluster0.hpbtn.mongodb.net/passkey?retryWrites=true&w=majority&appName=Cluster0").then(() => {
 
-mongoose.connect("mongodb+srv://muthupandim5799:ArchanAMu2@cluster0.rahi7.mongodb.net/passkey?retryWrites=true&w=majority&appName=Cluster0").then(() => {
     console.log("Connected to DB");
-}).catch(() => {
-    console.log("Failed to connect");
+}).catch((error) => {
+    console.log(error);
 });
 
 const credential = mongoose.model("credential", {}, "bulkmail");
@@ -33,9 +33,9 @@ app.post("/sendmail", (req, res) => {
                 for (let index = 0; index < emailList.length; index++) {
                     await transporter.sendMail(
                         {
-                            from: "smartmu2muthu@gmail.com",
+                            from: "nanthiniprema48@gmail.com",
                             to: emailList[index],
-                            subject: "A message from Mu2",
+                            subject: "A message from nandy",
                             text: msg
                         }
                     )
